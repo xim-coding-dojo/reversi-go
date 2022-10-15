@@ -1,0 +1,21 @@
+{
+  "image_name": "cyberdojofoundation/go_testify:3f62bba",
+  "display_name": "Go, testify",
+  "filename_extension": [
+    ".go"
+  ],
+  "max_seconds": 15,
+  "tab_size": 4,
+  "exercise": "Reversi",
+  "version": 2,
+  "created": [
+    2022,
+    10,
+    15,
+    15,
+    48,
+    0,
+    215912
+  ],
+  "id": "xALNvc"
+}
