@@ -2,39 +2,50 @@ package main
 
 import "fmt"
 
-func markPlayersNextMoves(board *[8][8]byte, player rune) [8][8]byte {
-	var otherPlayer = 'B'
-	var empty = '.'
-	var move = '0'
+type Board struct {
+	length  int
+	width   int
+	playerA rune
+	playerB rune
+	empty   rune
+	move    rune
+}
+
+func newBoard() *Board {
+	return &Board{8, 8, 'B', 'W', '.', '0'}
+}
+
+func markPlayersNextMoves(boardInput *[8][8]byte, player rune) [8][8]byte {
+	var resultBoard = *boardInput
+	var boardSettings = newBoard()
+	var otherPlayer = boardSettings.playerA
 	var y, x int
 
-	if player == 'B' {
-		otherPlayer = 'W'
+	if player == boardSettings.playerA {
+		otherPlayer = boardSettings.playerB
 	}
-
-	var resultBoard = *board
 
 	for y = 0; y < 8; y++ {
 		for x = 0; x < 8; x++ {
-			if board[y][x] == byte(player) {
-				if board[y+1][x] == byte(otherPlayer) {
-					if board[y+2][x] == byte(empty) {
-						resultBoard[y+2][x] = byte(move)
+			if boardInput[y][x] == byte(player) {
+				if boardInput[y+1][x] == byte(otherPlayer) {
+					if boardInput[y+2][x] == byte(boardSettings.empty) {
+						resultBoard[y+2][x] = byte(boardSettings.move)
 					}
 				}
-				if board[y-1][x] == byte(otherPlayer) {
-					if board[y-2][x] == byte(empty) {
-						resultBoard[y-2][x] = byte(move)
+				if boardInput[y-1][x] == byte(otherPlayer) {
+					if boardInput[y-2][x] == byte(boardSettings.empty) {
+						resultBoard[y-2][x] = byte(boardSettings.move)
 					}
 				}
-				if board[y][x+1] == byte(otherPlayer) {
-					if board[y][x+2] == byte(empty) {
-						resultBoard[y][x+2] = byte(move)
+				if boardInput[y][x+1] == byte(otherPlayer) {
+					if boardInput[y][x+2] == byte(boardSettings.empty) {
+						resultBoard[y][x+2] = byte(boardSettings.move)
 					}
 				}
-				if board[y][x-1] == byte(otherPlayer) {
-					if board[y][x-2] == byte(empty) {
-						resultBoard[y][x-2] = byte(move)
+				if boardInput[y][x-1] == byte(otherPlayer) {
+					if boardInput[y][x-2] == byte(boardSettings.empty) {
+						resultBoard[y][x-2] = byte(boardSettings.move)
 					}
 				}
 			}
