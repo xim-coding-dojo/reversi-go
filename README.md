@@ -12,3 +12,10 @@ git remote add origin https://github.com/diegopego/cyber-dojo-2021-7-11-bR2hnf.g
 git branch -M main
 git push -u origin main
 ```
+
+## To run the test
+- Install Go (https://go.dev/)
+```
+cd files 
+go test
+```
