@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func answer(board *[8][8]byte, player rune) [8][8]byte {
+func markPlayersNextMoves(board *[8][8]byte, player rune) [8][8]byte {
 	var otherPlayer = 'B'
 	var empty = '.'
 	var move = '0'
@@ -17,7 +17,6 @@ func answer(board *[8][8]byte, player rune) [8][8]byte {
 	for y = 0; y < 8; y++ {
 		for x = 0; x < 8; x++ {
 			if board[y][x] == byte(player) {
-				fmt.Printf("[%x]", board[y][x])
 				if board[y+1][x] == byte(otherPlayer) {
 					if board[y+2][x] == byte(empty) {
 						resultBoard[y+2][x] = byte(move)
@@ -40,7 +39,6 @@ func answer(board *[8][8]byte, player rune) [8][8]byte {
 				}
 			}
 		}
-		fmt.Printf("\n")
 	}
 
 	return resultBoard

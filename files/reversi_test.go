@@ -28,5 +28,5 @@ func Test_mark_player_moves(t *testing.T) {
 		{'.', '.', '.', '.', '.', '.', '.', '.'},
 	}
 
-	assert.Equal(t, result_board, answer(&board, 'B'))
+	assert.Equal(t, result_board, markPlayersNextMoves(&board, 'B'))
 }
